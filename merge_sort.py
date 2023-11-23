@@ -1,4 +1,4 @@
-def ms_split(arr):
+def frag(arr):
     matrix = []
     for e in arr:
         matrix.append([e])
@@ -6,7 +6,7 @@ def ms_split(arr):
     return matrix
 
 
-def ms_sort(arr1, arr2):
+def inner_sort(arr1, arr2):
     i, j = 0, 0
     return_arr = []
     while i < len(arr1) and j < len(arr2):
@@ -21,13 +21,17 @@ def ms_sort(arr1, arr2):
 
     return return_arr
 
-def ms_merge_sort(arr):
-    matrix = ms_split(arr)
-    i, j = 0, 1
-    return_arr = []
-    while j < len(matrix):
-        return_arr.append(ms_sort(matrix[i], matrix[j]))
+def merge_sort(arr):
+    matrix = frag(arr)
+    while len(matrix) > 1:
+        temp_matrix = []
+        i, j = 0, 1
+        while j < len(matrix):
+            temp_matrix.append(inner_sort(matrix[i], matrix[j]))
+            i += 2
+            j += 2
+        if i == len(matrix) - 1:
+            temp_matrix.append(matrix[i])
+        matrix = temp_matrix
     
-    return return_arr
-
-print(ms_merge_sort([8, 7, 6, 5, 4, 3, 2, 1]))
+    return matrix[0]
