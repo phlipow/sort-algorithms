@@ -1,0 +1,1 @@
+This is an attempt to recreate sorting algorithms that I'm studying in IAA (Introduction of Algorithm Analysis) classes without consulting the original code, so the scripts may not have the best time complexity or be written in the best way.
